@@ -9,7 +9,6 @@ exports.handler = async (event) => {
         };
         return response;
     }
-
  
     const response = {
         statusCode: 400,
