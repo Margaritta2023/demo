@@ -5,6 +5,18 @@
     "custom_policies": [
       "lambda-basic-execution"
     ],
+    "trust_relationship": {
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "Service": "apigateway.amazonaws.com"
+          },
+          "Action": "sts:AssumeRole"
+        }
+      ],
+      "Version": "2012-10-17"
+    },
     "resource_type": "iam_role",
     "tags": {}
   }

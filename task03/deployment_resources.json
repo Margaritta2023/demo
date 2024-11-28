@@ -1,58 +1,23 @@
 {
-  "lambda-basic-execution": {
-    "policy_content": {
+  "hello_world-role": {
+    "predefined_policies": [],
+    "principal_service": "lambda",
+    "custom_policies": [
+      "lambda-basic-execution"
+    ],
+    "trust_relationship": {
       "Statement": [
         {
-          "Action": [
-            "lambda:InvokeFunctionUrl",
-            "lambda:UpdateFunctionUrlConfig",
-            "lambda:DeleteFunction",
-            "lambda:AddPermission",
-            "logs:CreateLogGroup",
-            "logs:CreateLogStream",
-            "logs:PutLogEvents",
-            "dynamodb:GetItem",
-            "dynamodb:Query",
-            "dynamodb:PutItem",
-            "dynamodb:Batch*",
-            "dynamodb:DeleteItem",
-            "ssm:PutParameter",
-            "ssm:GetParameter",
-            "kms:Decrypt"
-          ],
           "Effect": "Allow",
-          "Resource": "*",
-          "Condition": {
-            "StringNotEquals": {
-              "lambda:FunctionUrlAuthType": "NONE"
-            }
-          }
+          "Principal": {
+            "Service": "apigateway.amazonaws.com"
+          },
+          "Action": "sts:AssumeRole"
         }
       ],
       "Version": "2012-10-17"
     },
-    "resource_type": "iam_policy",
-    "tags": {}
-  },
-  "demo-api": {
-    "resource_type": "api_gateway",
-    "deploy_stage": "api",
-    "dependencies": [],
-    "resources": {
-      "/hello": {
-        "GET": {
-          "integration_type": "lambda",
-          "lambda_function": "hello_world",
-          "responses": {
-            "200": {
-              "statusCode": 200,
-              "body_template": "{ \"statusCode\": 200, \"message\": \"Hello from Lambda\" }"
-            }
-          }
-        }
-      }
-    },
-    "minimum_compression_size": 0,
+    "resource_type": "iam_role",
     "tags": {}
   }
 }
