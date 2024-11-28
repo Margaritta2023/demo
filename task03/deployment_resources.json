@@ -4,6 +4,10 @@
       "Statement": [
         {
           "Action": [
+            "lambda:InvokeFunctionUrl",
+            "lambda:UpdateFunctionUrlConfig",
+            "lambda:DeleteFunction",
+            "lambda:AddPermission",
             "logs:CreateLogGroup",
             "logs:CreateLogStream",
             "logs:PutLogEvents",
@@ -17,7 +21,12 @@
             "kms:Decrypt"
           ],
           "Effect": "Allow",
-          "Resource": "*"
+          "Resource": "*",
+          "Condition":{
+            "StringNotEqulas":{
+              "lambda:FunctionUrlAuthType":"NONE"
+            }
+          }
         }
       ],
       "Version": "2012-10-17"
