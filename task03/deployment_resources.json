@@ -43,7 +43,6 @@
         "GET": {
           "integration_type": "lambda",
           "lambda_function": "hello_world",
-          "authorizer": "NONE",
           "responses": {
             "200": {
               "statusCode": 200,
