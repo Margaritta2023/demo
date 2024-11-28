@@ -22,9 +22,9 @@
           ],
           "Effect": "Allow",
           "Resource": "*",
-          "Condition":{
-            "StringNotEqulas":{
-              "lambda:FunctionUrlAuthType":"NONE"
+          "Condition": {
+            "StringNotEquals": {
+              "lambda:FunctionUrlAuthType": "NONE"
             }
           }
         }
