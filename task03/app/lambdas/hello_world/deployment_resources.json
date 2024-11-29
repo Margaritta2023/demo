@@ -1,9 +1,23 @@
 {
-  "hello_world": {
-    "resource_type": "lambda",
-    "runtime": "nodejs14.x",  
-    "handler": "index.handler",  
-    "role": "hello_world-role2", 
+  "hello_world-role2": {
+    "predefined_policies": [],
+    "principal_service": "lambda",
+    "custom_policies": [
+      "lambda-basic-execution"
+    ],
+    "trust_relationship": {
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "Service": "apigateway.amazonaws.com"
+          },
+          "Action": "sts:AssumeRole"
+        }
+      ],
+      "Version": "2012-10-17"
+    },
+    "resource_type": "iam_role",
     "tags": {}
   }
 }
