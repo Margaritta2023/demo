@@ -1,6 +1,7 @@
 {
   "hello_world-role": {
     "predefined_policies": [],
+    "path": "task032/task032/app/lambdas/hello_world",
     "principal_service": "lambda",
     "custom_policies": [
       "lambda-basic-execution"
