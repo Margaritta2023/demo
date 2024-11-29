@@ -27,9 +27,23 @@
   },
   "demo-api": {
     "resource_type": "api_gateway",
+    "name": "cmtr-63edc6d2-task3_api-test",  
     "deploy_stage": "api",
     "dependencies": [],
-    "resources": {},
+    "resources": {
+      "/hello": {
+        "GET": {
+          "integration_type": "lambda",
+          "lambda_function": "hello_world",
+          "responses": {
+            "200": {
+              "statusCode": 200,
+              "body_template": "{ \"statusCode\": 200, \"message\": \"Hello from Lambda\" }"
+            }
+          }
+        }
+      }
+    },
     "minimum_compression_size": 0,
     "tags": {}
   }
